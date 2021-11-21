@@ -1,0 +1,70 @@
+html
+  overflow: hidden
+body
+  margin: 0
+  padding: 0
+
+.game
+  background: #1d1e1e
+  width: 100vw
+  height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  &-header
+    margin-bottom: 25px
+    &__score
+      font-size: 50px
+      color: white
+
+.field-wrapper
+  display: flex
+  align-items: center
+  align-content: center
+  background-color: #232526
+  border-radius: 10px
+  border: 10px solid #232526
+  box-shadow: 0 0 10px 10px #101010
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 100%25 100%25' xmlns='http://www.w3.org/2000/svg' %3E%3Crect  width='32' height='32'  fill='gray' opacity='0.3' x='0' y='0' rx='8' /%3E%3C/svg%3E")
+
+.modal
+  position: absolute
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-around
+  top: 150px
+  margin: auto
+  width: 300px
+  height: 200px
+  border-radius: 10px
+  box-shadow: 0 0 10px 10px #101010
+  background-color: #0a223d
+  color: #fff
+  z-index: 100
+  &__title
+    margin: 0
+    text-transform: uppercase
+    color: #E0E0E0
+  &__score
+    font-size: 38px
+    font-weight: bold
+    color: teal
+  &__btn
+    text-transform: uppercase
+    width: 70%
+    min-height: 45px
+    font-style: normal
+    font-weight: 600
+    font-size: 14px
+    line-height: 19px
+    border-radius: 4px
+    background-color: #ec1f46
+    border: none
+    color: #000
+    cursor: pointer
+    &:hover
+      background-color: #60F7A4
+      &:active
+        background-color: rgba(#60F7A4, 0.75)
