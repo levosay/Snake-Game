@@ -23,19 +23,14 @@ const snake = {
   driveX: cfg.sizeSquare + padding,
   driveY: 0,
   tails: [],
-  maxTails: 7
+  maxTails: 3
 }
 const food = {
   x: 400,
   y: 200
 }
 
-function playSound (track, call) {
-  const sound = new Audio()
-  sound.src = track
-  call ? sound.volume = 0.1 : sound.volume = 0.5
-  sound.play()
-}
+
 startGameBtn.addEventListener('click', () => {
   startGameBtn.parentElement.remove()
   requestAnimationFrame(gameLoop)
@@ -64,7 +59,6 @@ document.addEventListener('keydown', (event) => {
 })
 
 function gameLoop () {
-  if (score === 5) stopGame()
   if (flag) {
     requestAnimationFrame(gameLoop)
     if (++cfg.step < cfg.maxStep) return
@@ -91,6 +85,7 @@ function drawSnake () {
     pen.fillRect(elem.x, elem.y, cfg.sizeSquare, cfg.sizeSquare)
 
     if (snake.x === food.x && snake.y === food.y) {
+      snake.maxTails++
       score++
       drawScore()
       playSound(soundSuccess, true)
@@ -141,6 +136,7 @@ function refreshGame () {
   snake.driveX = cfg.sizeSquare + padding
   snake.driveY = 0
   snake.tails = []
+  snake.maxTails = 3
 
   gameLoop()
   drawScore()
@@ -162,6 +158,14 @@ function drawFood () {
 function drawScore () {
   scoreBlock.innerHTML = score.toString()
 }
+
+function playSound (track, call) {
+  const sound = new Audio()
+  sound.src = track
+  call ? sound.volume = 0.1 : sound.volume = 0.5
+  sound.play()
+}
+
 const gerRandomNumber = (max, min) => Math.floor(Math.random() * (max - min) + min)
 
 drawScore()
